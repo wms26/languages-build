@@ -1,4 +1,4 @@
-name: java_build(linux_java17)
+name: java_build(linux_java11)
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 17
+          java-version: 11
           
       # 读取项目地址
       - id: get-project
@@ -30,7 +30,7 @@ jobs:
       - name: Build the app
         working-directory: ./project
         run: |
-          if [ ! -f "gradlew" ]; then gradle wrapper --gradle-version 7.0; fi
+          if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
           ./gradlew createExe
 
