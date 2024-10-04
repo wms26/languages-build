@@ -30,7 +30,7 @@ jobs:
       - name: Build the app
         working-directory: ./project
         run: |
-          if [ ! -f "gradlew" ]; then gradle wrapper; fi
+          if [ ! -f "gradlew" ]; then gradle wrapper --gradle-version 7.0; fi
           chmod +x gradlew
           ./gradlew createExe
 
