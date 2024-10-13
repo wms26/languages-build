@@ -1,4 +1,4 @@
-name: android_build(java14)
+name: android_build(java11)
 
 on:
   workflow_dispatch:
@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v4.2.0
         
       # 设置 Java 运行环境
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 14
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v1
+      #   with:
+      #     java-version: 14
           
       # 读取项目地址
       - id: get-project
