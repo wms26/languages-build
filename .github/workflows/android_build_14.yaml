@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       # 拉取 android_builder 的源代码
       - name: Checkout the code
