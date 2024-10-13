@@ -32,7 +32,8 @@ jobs:
         run: |
           if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          # ./gradlew assembleDebug --stacktrace
+          ./gradlew build --stacktrace
 
       # 打包上传生成的 APK 到的网页端
       - name: Upload APK
