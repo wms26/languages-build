@@ -1,0 +1,34 @@
+name: node_build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4.2.0
+          
+      # 读取项目地址
+      - id: get-project
+        name: Get project name
+        run: echo "PROJECT=$(cat android-project-to-build)" >> $GITHUB_OUTPUT
+        
+      # 拉取项目源码到虚拟环境
+      - name: Clone project
+        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+        
+      # 构建
+      - name: Build project
+        working-directory: ./project
+        run: |
+          npm install
+          npm run build
+
+      # 打包上传生成的 APK 到的网页端
+      - name: Upload build file
+        uses: actions/upload-artifact@v3.2.1-node20
+        with:
+          name: my-build-file
+          path: ./
