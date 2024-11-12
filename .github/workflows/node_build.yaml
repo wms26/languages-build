@@ -13,7 +13,7 @@ jobs:
       # 读取项目地址
       - id: get-project
         name: Get project name
-        run: echo "PROJECT=$(cat android-project-to-build)" >> $GITHUB_OUTPUT
+        run: echo "PROJECT=$(cat node-project-to-build)" >> $GITHUB_OUTPUT
         
       # 拉取项目源码到虚拟环境
       - name: Clone project
