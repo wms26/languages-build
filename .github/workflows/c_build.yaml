@@ -24,6 +24,7 @@ jobs:
       - name: Build the files
         working-directory: ./project
         run: |
+          sudo apt install libnfc
           autoreconf -is
           ./configure
           make && sudo make install
