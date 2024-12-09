@@ -1,0 +1,40 @@
+name: android_build(java8)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取 android_builder 的源代码
+      - name: Checkout the code
+        uses: actions/checkout@v4.2.0
+        
+      # 设置 Java 运行环境
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+          
+      # 读取项目地址
+      - id: get-project
+        name: Get project name
+        run: echo "PROJECT=$(cat android-project-to-build)" >> $GITHUB_OUTPUT
+        
+      # 拉取项目源码到虚拟环境
+      - name: Clone project
+        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+        
+      # 构建调试版 APK
+      - name: Build the app
+        working-directory: ./project
+        run: |
+          ./gradlew build
+
+      # 打包上传生成的 APK 到的网页端
+      - name: Upload APK
+        uses: actions/upload-artifact@v3.2.1-node20
+        with:
+          name: my-build-apk
+          path: ./**/*.apk
