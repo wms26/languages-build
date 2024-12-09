@@ -1,21 +1,21 @@
-name: android_build(java8_nodebug)
+name: android_build(java11_nodebug)
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       # 拉取 android_builder 的源代码
       - name: Checkout the code
         uses: actions/checkout@v4.2.0
         
-      # 设置 Java 运行环境
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 8
+      # # 设置 Java 运行环境
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v1
+      #   with:
+      #     java-version: 8
           
       # 读取项目地址
       - id: get-project
