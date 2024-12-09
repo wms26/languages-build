@@ -1,4 +1,4 @@
-name: android_build(java8)
+name: android_build(java8_nodebug)
 
 on:
   workflow_dispatch:
