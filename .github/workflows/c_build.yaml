@@ -9,7 +9,7 @@ jobs:
     steps:
       # 拉取仓库源代码
       - name: Checkout the code
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4.2.2
           
       # 读取项目地址
       - id: get-project
@@ -31,7 +31,7 @@ jobs:
 
       # 打包上传生成的 exe 到的网页端
       - name: Upload build files
-        uses: actions/upload-artifact@v3.2.1-node20
+        uses: actions/upload-artifact@v4
         with:
           name: my-build-files
           path: ./*
